@@ -7,3 +7,6 @@ transformers
 sentencepiece
 matplotlib
 seaborn
+flask
+torch
+transformers

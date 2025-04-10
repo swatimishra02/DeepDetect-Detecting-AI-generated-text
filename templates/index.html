@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DeepDetect</title>
+</head>
+<body>
+    <h2>AI-Generated Text Detector</h2>
+    <form method="POST">
+        <textarea name="text" rows="10" cols="80" placeholder="Enter your text here..."></textarea><br>
+        <input type="submit" value="Detect">
+    </form>
+    {% if result %}
+        <h3>Prediction: {{ result }}</h3>
+    {% endif %}
+</body>
+</html>
