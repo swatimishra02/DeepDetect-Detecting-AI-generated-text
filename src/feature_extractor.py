@@ -77,6 +77,7 @@ def process_dataset(split):
 
     logger.info(f"Finished processing {split} dataset! Features saved to {output_file}")
 
+
 if __name__ == "__main__":
     for split in ["test"]:
         logger.info(f"Processing {split} dataset in batches...")

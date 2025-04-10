@@ -10,8 +10,12 @@ from sklearn.metrics.pairwise import cosine_similarity
 import sys
 import os
 
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
-sys.path.insert(0, PROJECT_ROOT)
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+SRC_PATH = os.path.join(PROJECT_ROOT, "src")
+sys.path.insert(0, SRC_PATH)
+
+from preprocessing.preprocessor import split_and_preprocess
+
 
 from utils.logger import setup_logger  
 
