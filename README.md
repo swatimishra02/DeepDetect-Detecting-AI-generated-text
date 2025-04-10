@@ -1,4 +1,4 @@
-# 🤖 DeepDetect 🤖
+# 🤖 DeepDetect 🤖 : Detecting AI generated text
 
 DeepDetect is an AI generated text detection model, using a hybrid fine-tuned XLNet embeddings with zero-shot classification using BART. 
 
@@ -15,7 +15,7 @@ DeepDetect is an AI generated text detection model, using a hybrid fine-tuned XL
 
 ![Model Architecture](images/architecture.png)
 
-fine-tuned XLNet embeddings with zero-shot classification using BART, which leverages the bidirectional learned features of XLnet, and zeroshots’s generalised knowledge across multiple datasets.
+Fine-tuned XLNet embeddings with zero-shot classification using BART, which leverages the bidirectional learned features of XLnet, and zeroshots’s generalised knowledge across multiple datasets.
 
 ### Dataset 📁
 
@@ -25,17 +25,19 @@ Contains 29,000 essays, labeled into two classes: 0 for Human-written, and 1 for
 
 ### Experimentation Details 📊
 
-• Training-test-val split : 70:15:15 
-• To avoid data leakage, removed 3200 samples from the training set using cosine similarity between train test val dataset.
-• The model was trained for 100 epochs, but stopped training after 46 epochs due to early stopping implementation.  
-• Trained using **AdamW** as the optimizer with a **learning rate of 2e-5**, and **CrossEntropyLoss** as the loss function.
+- Training-test-val split : 70:15:15 
+- To avoid data leakage, removed 3200 samples from the training set using cosine similarity between train test val dataset.
+- The model was trained for 100 epochs, but stopped training after 46 epochs due to early stopping implementation.  
+- Trained using **AdamW** as the optimizer with a **learning rate of 2e-5**, and **CrossEntropyLoss** as the loss function.
 
 ### Results 🕵️‍♀️
 
-![Confusion Matrix](images/confusion_matrix.png)
-![Train and Val Accuracy curve](images/accuracy_curve.png)
+<img src="images/confusion_matrix.png" alt="Confusion Matrix"  width="600" height="400"/>
+<img src="images/accuract_curve.png" alt="Model Train and Val Accuracy"  width="600" height="400"/>
 
-### Usage 🕵️‍♀️
+
+
+### Usage 🧑‍💻
 
 - Clone the repository: `git clone https://github.com/your-username/deepdetect.git`
 - Install the required packages: `pip install -r requirements.txt`
