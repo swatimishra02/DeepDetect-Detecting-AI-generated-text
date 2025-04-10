@@ -1,8 +1,31 @@
 # 🤖 DeepDetect 🤖 : Detecting AI generated text
 
-DeepDetect is an AI generated text detection model, using a hybrid fine-tuned XLNet embeddings with zero-shot classification using BART. 
 
-### 📒 Features
+
+DeepDetect is an AI generated text detection model, using a hybrid **Fine-Tuned XLNet Embeddings** with **Zero-Shot Classification using BART.** 
+
+## XLnet 🌞
+
+XLNet is an autoregressive pretraining method proposed in the paper “XLNet: Generalized Autoregressive Pretraining for Language Understanding ” [Paper Link"](https://arxiv.org/abs/1906.08237). XLNet uses an innovative approach to training. Unlike previous models like BERT, which use masked language modeling (MLM), where certain words are masked and predicted based on context, XLNet employs permutation language modeling (PLM). This means it trains on all possible permutations of the input sequence, enabling it to capture bidirectional context without masking. 
+
+## Zero-Shot learning with BART 🎯
+
+The method works by posing the sequence to be classified as the NLI premise and to construct a hypothesis from each candidate label. For example, if we want to evaluate whether a sequence belongs to the class "politics", we could construct a hypothesis of This text is about politics.. The probabilities for entailment and contradiction are then converted to label probabilities. [Reference](https://huggingface.co/facebook/bart-large-mnli)
+
+
+
+DeepDetect is an AI generated text detection model, using a hybrid **Fine-Tuned XLNet Embeddings** with **Zero-Shot Classification using BART.** 
+
+## XLnet 🌞
+
+XLNet is an autoregressive pretraining method proposed in the paper “XLNet: Generalized Autoregressive Pretraining for Language Understanding ” ([Paper Link](https://arxiv.org/abs/1906.08237)). XLNet uses an innovative approach to training. Unlike previous models like BERT, which use masked language modeling (MLM), where certain words are masked and predicted based on context, XLNet employs permutation language modeling (PLM). This means it trains on all possible permutations of the input sequence, enabling it to capture bidirectional context without masking. 
+
+## Zero-Shot learning with BART 🎯
+
+The method works by posing the sequence to be classified as the NLI premise and to construct a hypothesis from each candidate label. For example, if we want to evaluate whether a sequence belongs to the class "politics", we could construct a hypothesis of This text is about politics.. The probabilities for entailment and contradiction are then converted to label probabilities. ([Reference](https://huggingface.co/facebook/bart-large-mnli))
+
+
+## 📒 Features
 
 - ✅ Binary classification for Human vs AI-generated text
 - ✅ Hybrid model architecture:
