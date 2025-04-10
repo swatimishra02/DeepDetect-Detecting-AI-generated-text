@@ -3,6 +3,6 @@ services:
     name: deepdetect
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
+    startCommand: "gunicorn run:app"
     plan: free
     autoDeploy: true

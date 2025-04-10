@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from model import FeatureClassifier  # Make sure this matches your definition
+from model import FeatureClassifier 
 import os
 from transformers import XLNetTokenizer, XLNetModel
 
@@ -10,22 +10,19 @@ tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased')
 xlnet_model = XLNetModel.from_pretrained('xlnet-base-cased').to(device)
 
 def extract_features_from_text(text: str) -> np.ndarray:
-    # XLNet embeddings (768-dim)
     inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True, max_length=512)
     inputs = {k: v.to(device) for k, v in inputs.items()}
     with torch.no_grad():
         outputs = xlnet_model(**inputs)
         xlnet_features = outputs.last_hidden_state.mean(dim=1).squeeze().cpu().numpy()
     
-    # Dummy extra features to match training dimension
-    extra_features = np.array([0.0, 0.0])  # Replace with real Zero-Shot scores if used during training
+    extra_features = np.array([0.0, 0.0])  
     combined_features = np.concatenate((xlnet_features, extra_features))
 
     return combined_features
 
 
-# Load model
-INPUT_DIM = 770  # or whatever your feature dimension is
+INPUT_DIM = 770  
 model = FeatureClassifier(input_dim=INPUT_DIM)
 model.load_state_dict(torch.load("best_model.pth", map_location=device))
 model.to(device)
