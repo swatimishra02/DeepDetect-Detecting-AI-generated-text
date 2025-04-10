@@ -13,7 +13,7 @@ DeepDetect is an AI generated text detection model, using a hybrid fine-tuned XL
 
 ### Model Architecture ⭐
 
-![Model Architecture](images\architecture.png)
+![Model Architecture](images/architecture.png)
 
 fine-tuned XLNet embeddings with zero-shot classification using BART, which leverages the bidirectional learned features of XLnet, and zeroshots’s generalised knowledge across multiple datasets.
 
@@ -32,15 +32,15 @@ Contains 29,000 essays, labeled into two classes: 0 for Human-written, and 1 for
 
 ### Results 🕵️‍♀️
 
-![Confusion Matrix](images\confusion_matrix.png)
-![Train and Val Accuracy curve](images\accuracy_curve.png)
+![Confusion Matrix](images/confusion_matrix.png)
+![Train and Val Accuracy curve](images/accuracy_curve.png)
 
 ### Usage 🕵️‍♀️
 
 - Clone the repository: `git clone https://github.com/your-username/deepdetect.git`
 - Install the required packages: `pip install -r requirements.txt`
 - Create virtual env : `conda create --name deepdetect python=3.8.5`, and 'conda activate deepdetect' 
-- Run 'python main.py'
+- Run `python main.py`
 
 
 🙌 Got ideas or improvements? Clone this repo, make changes, and send a pull request. Contributions are super welcome! 💪
