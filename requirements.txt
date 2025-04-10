@@ -10,3 +10,4 @@ seaborn
 flask
 torch
 transformers
+gunicorn
