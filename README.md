@@ -6,7 +6,7 @@ DeepDetect is an AI generated text detection model, using a hybrid **Fine-Tuned 
 
 ## XLnet 🌞
 
-XLNet is an autoregressive pretraining method proposed in the paper “XLNet: Generalized Autoregressive Pretraining for Language Understanding ” [Paper Link"](https://arxiv.org/abs/1906.08237). XLNet uses an innovative approach to training. Unlike previous models like BERT, which use masked language modeling (MLM), where certain words are masked and predicted based on context, XLNet employs permutation language modeling (PLM). This means it trains on all possible permutations of the input sequence, enabling it to capture bidirectional context without masking. 
+XLNet is an autoregressive pretraining method proposed in the paper “XLNet: Generalized Autoregressive Pretraining for Language Understanding ” [Paper Link](https://arxiv.org/abs/1906.08237). XLNet uses an innovative approach to training. Unlike previous models like BERT, which use masked language modeling (MLM), where certain words are masked and predicted based on context, XLNet employs permutation language modeling (PLM). This means it trains on all possible permutations of the input sequence, enabling it to capture bidirectional context without masking. 
 
 ## Zero-Shot learning with BART 🎯
 
