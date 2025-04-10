@@ -33,7 +33,7 @@ Contains 29,000 essays, labeled into two classes: 0 for Human-written, and 1 for
 ### Results 🕵️‍♀️
 
 <img src="images/confusion_matrix.png" alt="Confusion Matrix"  width="600" height="400"/>
-<img src="images/accuract_curve.png" alt="Model Train and Val Accuracy"  width="600" height="400"/>
+<img src="images/accuracy_curve.png" alt="Model Train and Val Accuracy"  width="600" height="400"/>
 
 
 
