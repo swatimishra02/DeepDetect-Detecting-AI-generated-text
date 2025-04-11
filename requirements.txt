@@ -11,3 +11,6 @@ flask
 torch
 transformers
 gunicorn
+PyMuPDF
+python-docx
+

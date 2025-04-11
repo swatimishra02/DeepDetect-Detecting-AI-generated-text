@@ -1,17 +1,234 @@
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DeepDetect</title>
+    <title>DeepDetect – AI Text Detector</title>
+    <style>
+        body {
+            background: #f2f6fc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        .or {
+            margin: 20px 0;
+            font-weight: bold;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <h2>AI-Generated Text Detector</h2>
-    <form method="POST">
-        <textarea name="text" rows="10" cols="80" placeholder="Enter your text here..."></textarea><br>
-        <input type="submit" value="Detect">
-    </form>
-    {% if result %}
-        <h3>Prediction: {{ result }}</h3>
-    {% endif %}
+    <div class="container">
+        <h2>🧠 DeepDetect: AI vs Human Text Classifier</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <textarea name="text" placeholder="Paste your text here..."></textarea><br>
+            <div class="or">OR</div>
+            <input type="file" name="pdf_file" accept=".pdf"><br><br>
+            <input type="submit" value="Detect">
+        </form>
+
+        {% if result %}
+            <div class="result">
+                Prediction: {{ result }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DeepDetect – AI Text Detector</title>
+    <style>
+        body {
+            background: #f2f6fc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        .confidence {
+            font-size: 16px;
+            color: #444;
+        }
+
+        .or {
+            margin: 20px 0;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .file-drop {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .file-drop:hover {
+            background-color: #eef5ff;
+        }
+
+        .drag-over {
+            border-color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🧠 DeepDetect: AI vs Human Text Classifier</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <textarea name="text" placeholder="Paste your text here...">{{ extracted_text or '' }}</textarea><br>
+            <div class="or">OR</div>
+            <div class="file-drop" id="drop-area">
+                <p>Drag & drop a PDF, DOCX, or TXT file here or</p>
+                <input type="file" name="file" accept=".pdf,.docx,.txt">
+            </div>
+            <input type="submit" value="Detect">
+        </form>
+
+        {% if result %}
+            <div class="result">
+                Prediction: {{ result }}
+            </div>
+            {% if confidence %}
+            <div class="confidence">
+                Confidence: {{ confidence }}%
+            </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <script>
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = dropArea.querySelector('input[type="file"]');
+
+        dropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropArea.classList.add('drag-over');
+        });
+
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.classList.remove('drag-over');
+        });
+
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropArea.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+            }
+        });
+    </script>
 </body>
 </html>
